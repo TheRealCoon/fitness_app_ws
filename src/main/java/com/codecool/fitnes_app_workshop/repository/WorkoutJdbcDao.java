@@ -27,7 +27,7 @@ public class WorkoutJdbcDao {
 
     public List<Workout> findWorkouts(String workoutName) {
         log.info("SQL query for {}", workoutName);
-        String SQL = "SELECT * FROM workout WHERE name ILIKE '%?%';";
+        String SQL = "SELECT * FROM workout WHERE name ILIKE '%'||?||'%';";
         return template.query(SQL, mapper, workoutName);
     }
 
